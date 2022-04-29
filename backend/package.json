@@ -1,0 +1,24 @@
+{
+  "name": "mips-emu-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AbhiJ2706/mips-emu-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AbhiJ2706/mips-emu-server/issues"
+  },
+  "homepage": "https://github.com/AbhiJ2706/mips-emu-server#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express.js": "^1.0.0",
+    "expressjs": "^1.0.1"
+  }
+}
