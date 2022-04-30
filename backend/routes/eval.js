@@ -9,13 +9,12 @@ app.post("/recv_code",  async(req,res) => {
     const mode = req.body.mode
     console.log(code, mode)
     fs.writeFileSync("./py/test.asm", code)
-    const {exec} = require('child_process');
-    exec("./py/asm < ./py/test.asm > ./py/test.mips", (error, stdout, stderr) => {});
+    const {execSync} = require('child_process');
     if (mode == "twoints") {
         fs.writeFileSync("./code.in", `${req.body.reg1}\n${req.body.reg2}`)
-        exec('python3 ./py/mips_twoints.py < ./code.in > ./code.out');
+        execSync('./py/asm < ./py/test.asm > ./py/test.mips | python3 ./py/mips_twoints.py < ./code.in > ./code.out');
     } else {
-        exec('python3 -m py/mips_array > code.out');
+        execSync('python3 -m py/mips_array > code.out');
     }
     console.log(toString(fs.readFileSync("./code.out")))
     res.send(fs.readFileSync("./code.out"))

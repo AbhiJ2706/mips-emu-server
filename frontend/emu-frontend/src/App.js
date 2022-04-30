@@ -27,14 +27,15 @@ function App() {
   }
   return (
     <div className="App">
-      <div className="twoints">
-        <div className="regs">
+      <div className="twoints" style={styles.twoints}>
+        <div className="regs" style={styles.regs}>
           <input type="text"
             id="reg1"
             name="reg1"
             label="Value of $1"
             autoComplete="reg1"
             onChange={(e) => setReg1(e.target.value)}
+            style={styles.tinp}
           />
           <input type="text"
             id="reg2"
@@ -42,9 +43,10 @@ function App() {
             label="Value of $2"
             autoComplete="reg2"
             onChange={(e) => setReg2(e.target.value)}
+            style={styles.tinp}
           />
         </div>
-        <div className="inp">
+        <div className="inp" style={styles.inp}>
           <textarea 
             id="code"
             name="code"
@@ -58,14 +60,54 @@ function App() {
           />
           <button onClick={handleSend}>Submit</button>
         </div>
-        <div className="out">
-          <p id="out">
-            {out}
-          </p>
+        <div className="out" style={styles.out}>
+          <textarea 
+            id="out"
+            cols="15"
+            rows="34"
+            value={out}
+          />
         </div>
       </div>
     </div>
   );
 }
+
+const styles = {
+  regs: {
+    height: "100vh",
+    width: "20vw",
+    border: "5px solid red",
+    display: "inline-block",
+    float: "left",
+    top: 0,
+    margin: "1px"
+  },
+  inp: {
+    height: "100vh",
+    width: "20vw",
+    border: "5px solid red",
+    display: "inline-block",
+    float: "left",
+    top: 0,
+    margin: "1px"
+  },
+  out: {
+    height: "100vh",
+    width: "20vw",
+    border: "5px solid red",
+    display: "inline-block",
+    float: "left",
+    top: 0,
+    margin: "1px"
+  },
+  twoints: {
+    width: "100vw",
+    height: "100vh"
+  },
+  tinp: {
+    width: "10vw"
+  }
+};
 
 export default App;
