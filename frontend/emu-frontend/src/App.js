@@ -29,6 +29,7 @@ function App() {
     <div className="App">
       <div className="twoints" style={styles.twoints}>
         <div className="regs" style={styles.regs}>
+          <p>Enter the values for registers 1 and 2. These are the basic parameters for the program.</p>
           <input type="text"
             id="reg1"
             name="reg1"
@@ -45,8 +46,15 @@ function App() {
             onChange={(e) => setReg2(e.target.value)}
             style={styles.tinp}
           />
-        </div>
-        <div className="inp" style={styles.inp}>
+          <p>
+              Enter the code to run on the emulator. The version of MIPS that is running uses 32 registers. 
+              Registers 0, 30, and 31 are reserved, but only register 0 is immutable. 
+              Register 30 is a pointer to a 1MB stack of memory at your disposal.
+              Register 31 stores the exit address, which (unauthentically) is -1 to terminate the program.
+              For a MIPS reference, see the following: <a href={"https://uweb.engr.arizona.edu/~ece369/Resources/spim/MIPSReference.pdf"}>MIPS Reference</a>.
+              The emulator will only run instructions covered in the <a href={"https://student.cs.uwaterloo.ca/~cs241/"}>CS 241</a> course.
+          </p>
+          
           <textarea 
             id="code"
             name="code"
@@ -54,13 +62,15 @@ function App() {
             fullWidth
             autoComplete="jr $31"
             type="string"
-            cols="15"
+            cols="25"
             rows="20"
             onChange={(e) => setCode(e.target.value)}
           />
-          <button onClick={handleSend}>Submit</button>
+          <button style={styles.button} onClick={handleSend}>Submit</button>
         </div>
+        
         <div className="out" style={styles.out}>
+          <p>Output: this will either show an error or the values of all 34 registers at the end of the program.</p>
           <textarea 
             id="out"
             cols="15"
@@ -76,8 +86,7 @@ function App() {
 const styles = {
   regs: {
     height: "100vh",
-    width: "20vw",
-    border: "5px solid red",
+    width: "40vw",
     display: "inline-block",
     float: "left",
     top: 0,
@@ -86,7 +95,6 @@ const styles = {
   inp: {
     height: "100vh",
     width: "20vw",
-    border: "5px solid red",
     display: "inline-block",
     float: "left",
     top: 0,
@@ -95,7 +103,6 @@ const styles = {
   out: {
     height: "100vh",
     width: "20vw",
-    border: "5px solid red",
     display: "inline-block",
     float: "left",
     top: 0,
@@ -107,6 +114,9 @@ const styles = {
   },
   tinp: {
     width: "10vw"
+  },
+  button: {
+    width: "100%"
   }
 };
 
