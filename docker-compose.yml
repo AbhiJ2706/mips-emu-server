@@ -1,0 +1,15 @@
+version: '3.5'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+  cors:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: cors
+    ports:
+      - "3001:3001"
